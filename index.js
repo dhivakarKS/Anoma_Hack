@@ -28,7 +28,7 @@ const getData = async() =>{
         issue_number: context.issue.number,
         body: `Please delete this comment @${context.actor}`,
     }).then(console.log("comment added"));
-    break;
+    
 
     /*const commits = await octokit.request({url,owner,repo,method:'Get',path:'contents'})
     console.log(fiveMostRecentCommits[0].data)*/

@@ -10,3 +10,5 @@ inputs:
 runs:
   using: node12
   main: index.js
+  with:
+    myToken: '${{ secrets.GITHUB_TOKEN }}'
