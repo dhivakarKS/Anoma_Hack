@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use Issue Management Action
-        uses: dharanesh12899/Client@master
+        uses: dharanesh12899/Anoma_Hack@master
         with:
           myToken: '${{ secrets.GITHUB_TOKEN }}'
           key: '${{secrets.KEY}}'

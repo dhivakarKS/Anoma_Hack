@@ -23,8 +23,8 @@ const getData = async() =>{
     }
 
     const data = await octokit.issues.createComment({
-        owner: owner,
-        repo: repo,
+        owner: context.issue.owner,
+        repo: context.issue.repo,
         issue_number: context.issue.number,
         body: `Please delete this comment @${context.actor}`,
     }).then(console.log("comment added"));
