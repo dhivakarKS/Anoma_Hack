@@ -1,0 +1,12 @@
+name: An issue moderation bot
+description: ' Warns users when adult content is posted'
+branding:
+  icon: anchor
+  color: green
+inputs:
+  myToken:
+    description: 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
+    required: true
+runs:
+  using: node12
+  main: index.js
