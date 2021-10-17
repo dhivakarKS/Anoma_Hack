@@ -19,13 +19,11 @@ const getData = async() =>{
     else {
         comment = context.payload.issue.body
     }
-        console.log("Actor: "+context.actor)
-        console.log("Owner: "+context.issue.owner)
         const data = await octokit.issues.createComment({
             owner: context.issue.owner,
             repo: context.issue.repo,
             issue_number: context.issue.number,
-            body: `Please delete this comment @${context.actor}`,
+            body: `This is a github action generated for you @${context.actor}`,
         }).then(console.log("comment added "+context.issue.owner));
 }
 
