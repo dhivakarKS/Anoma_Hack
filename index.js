@@ -21,13 +21,16 @@ const getData = async() =>{
     else {
         comment = context.payload.issue.body
     }
-    if(context.issue.actor !== context.issue.owner){
+    if(context.actor !== context.issue.owner){
         const data = await octokit.issues.createComment({
             owner: context.issue.owner,
             repo: context.issue.repo,
             issue_number: context.issue.number,
             body: `Please delete this comment @${context.actor}`,
         }).then(console.log("comment added "+context.issue.owner));
+    }
+    else{
+        return 0
     }
     
 
