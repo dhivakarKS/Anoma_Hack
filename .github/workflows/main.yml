@@ -1,5 +1,7 @@
 name: issue-man
 'on':
+  issues_comment:
+    types: [created,edited]
   issues:
     types: opened
 jobs:
