@@ -1,10 +1,9 @@
 //Github Requirements
 const github  = require('@actions/github');                     //Github Module
-const core = require('@actions/core');
 const context = github.context                                  //Github contexts module(to get the payload and to post a comment)
+const core = require('@actions/core');                          //Get Data from action.yml file
 const myToken = core.getInput('myToken');                       //Personal github access token
 const octokit = github.getOctokit(myToken)                      //provides access to the GitHub API
-const core = require('@actions/core');                          //Get Data from action.yml file
 
 //Azure Cognitive Services Requirements:
 //
