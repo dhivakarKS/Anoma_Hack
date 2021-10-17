@@ -1,6 +1,6 @@
 name: issue-man
 'on':
-  issues_comment:
+  issue_comment:
     types: [created,edited]
   issues:
     types: opened
