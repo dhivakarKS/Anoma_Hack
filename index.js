@@ -33,7 +33,7 @@ const commentIt = async() =>{
         for (link of links) {
             console.log(link);
             const adult = (await computerVisionClient.analyzeImage(link, {
-                visualFeatures: ['Adult']
+                visualFeatures: ['Description ']
             })).adult;
             console.log(adult)
             if (adult.isGoryContent || adult.isAdultContent) {
