@@ -8,10 +8,10 @@ inputs:
     description: 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
     required: true
   key:
-    description: 
+    description: cs key
     required: true
   endpoint:
-    description: 
+    description: cs endpoint
     required: true
 runs:
   using: node12
