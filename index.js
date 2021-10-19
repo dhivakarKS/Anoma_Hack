@@ -35,7 +35,7 @@ const commentIt = async() =>{
             const desc = (await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Description']
             })).desc;
-            for(d of desc.Description.Captions){
+            for(d of desc.Captions){
                 console.log(d)
             }
             //console.log(adult)
