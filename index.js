@@ -33,11 +33,10 @@ const commentIt = async() =>{
         for (link of links) {
             console.log(link);
 
-            const adult = (await computerVisionClient.analyzeImage(link, {
+            const adult = await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Color']
-            })).adult;
+            }).then(console.log(adult));
 
-            console.log(adult.dominantColorForeground);
             //console.log(adult)
             /*if (adult.isGoryContent || adult.isAdultContent) {
                 const data = await octokit.issues.createComment({
