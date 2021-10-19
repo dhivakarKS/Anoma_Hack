@@ -32,11 +32,12 @@ const commentIt = async() =>{
         let links = comment.match(re)
         for (link of links) {
             console.log(link);
-            const desc = (await computerVisionClient.analyzeImage(link, {
+
+            const adult = (await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Adult']
-            })).desc;
-            
-            console.log(desc);
+            })).adult;
+
+            console.log(adult);
             //console.log(adult)
             /*if (adult.isGoryContent || adult.isAdultContent) {
                 const data = await octokit.issues.createComment({
@@ -50,4 +51,4 @@ const commentIt = async() =>{
     }
 }
 
-commentIt().catch(core.setFailed);
+commentIt()
