@@ -37,7 +37,7 @@ const commentIt = async() =>{
                 visualFeatures: ['Color']
             })).adult;
 
-            console.log(adult);
+            console.log(adult.dominantColorForeground);
             //console.log(adult)
             /*if (adult.isGoryContent || adult.isAdultContent) {
                 const data = await octokit.issues.createComment({
