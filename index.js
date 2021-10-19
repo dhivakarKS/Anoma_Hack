@@ -30,6 +30,7 @@ const commentIt = async() =>{
     }
     if (re.test(comment)) {
         let links = comment.match(re)
+        console.log(links)
         for (link of links) {
             const adult = (await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Adult']
