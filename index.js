@@ -34,7 +34,7 @@ const commentIt = async() =>{
             console.log(link);
 
             const adult = (await computerVisionClient.analyzeImage(link, {
-                visualFeatures: ['Adult']
+                visualFeatures: ['Color']
             })).adult;
 
             console.log(adult);
