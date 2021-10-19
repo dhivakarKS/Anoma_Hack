@@ -8,10 +8,10 @@ inputs:
     description: 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
     required: true
   key:
-    description: b90f81b8b2e84ba394af62299ac58430
+    description: 
     required: true
   endpoint:
-    description: https://hack-anoma-2021-cv.cognitiveservices.azure.com/
+    description: 
     required: true
 runs:
   using: node12
