@@ -23,7 +23,7 @@ const getData = async() =>{
             owner: context.issue.owner,
             repo: context.issue.repo,
             issue_number: context.issue.number,
-            body: `This is a github action generated for you @${context.actor} for the comment ${comment}`,
+            body: `This is a github action generated comment for the actor @${context.actor} and for the comment ${comment}`,
         }).then(console.log("comment added "+context.issue.owner));
 }
 
