@@ -35,7 +35,7 @@ const commentIt = async() =>{
             const desc = (await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Description']
             })).desc;
-            console.log(desc.captions);
+            console.log(desc['captions']);
             //console.log(adult)
             /*if (adult.isGoryContent || adult.isAdultContent) {
                 const data = await octokit.issues.createComment({
