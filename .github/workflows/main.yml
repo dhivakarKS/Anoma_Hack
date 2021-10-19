@@ -12,3 +12,5 @@ jobs:
         uses: dharanesh12899/Anoma_Hack@master
         with:
           myToken: '${{ secrets.GITHUB_TOKEN }}'
+          key: '${{secrets.KEY}}'
+          endpoint: '${{secrets.ENDPOINT}}'

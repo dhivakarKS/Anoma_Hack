@@ -44,14 +44,6 @@ const commentIt = async() =>{
                     body: `Please delete this gory content @${context.actor}`,
                 }).then(console.log("comment added "+context.issue.owner));
             }
-            else{
-                const data = await octokit.issues.createComment({
-                    owner: context.issue.owner,
-                    repo: context.issue.repo,
-                    issue_number: context.issue.number,
-                    body: `Your comment is will be tracked and resolved @${context.actor}`,
-                }).then(console.log("comment added "+context.issue.owner));
-            }
         }
     }
 }
