@@ -33,7 +33,7 @@ const commentIt = async() =>{
         for (link of links) {
             console.log(link);
             const desc = (await computerVisionClient.analyzeImage(link, {
-                visualFeatures: ['Description']
+                visualFeatures: ['Adult','Description']
             })).desc;
             console.log(JSON.stringify(desc));
             //console.log(adult)
