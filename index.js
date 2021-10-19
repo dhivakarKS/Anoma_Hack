@@ -32,18 +32,26 @@ const commentIt = async() =>{
         let links = comment.match(re)
         for (link of links) {
             console.log(link);
-            const adult = (await computerVisionClient.analyzeImage(link, {
-                visualFeatures: ['Description ']
-            })).adult;
-            console.log(adult)
-            if (adult.isGoryContent || adult.isAdultContent) {
+            const desc = (await computerVisionClient.analyzeImage(link, {
+                visualFeatures: ['Description']
+            })).desc;
+
+            const data = await octokit.issues.createComment({
+                owner: context.issue.owner,
+                repo: context.issue.repo,
+                issue_number: context.issue.number,
+                body: `${desc}`,
+            }).then(console.log("comment added "+context.issue.owner));
+            
+            //console.log(adult)
+            /*if (adult.isGoryContent || adult.isAdultContent) {
                 const data = await octokit.issues.createComment({
                     owner: context.issue.owner,
                     repo: context.issue.repo,
                     issue_number: context.issue.number,
                     body: `Please delete this gory content @${context.actor}`,
                 }).then(console.log("comment added "+context.issue.owner));
-            }
+            }*/
         }
     }
 }
