@@ -5,13 +5,13 @@ branding:
   color: green
 inputs:
   myToken:
-    description: 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
+    description: Github API Key
     required: true
   key:
-    description: 31dedf6d22a74590bd291457f2ab22a2
+    description: Azure cognitive services Computer Vision Key
     required: true
   endpoint:
-    description: https://hack-anoma-cv.cognitiveservices.azure.com/
+    description: Azure Cognitive services Computer Vision Endpoint
     required: true
 runs:
   using: node12
