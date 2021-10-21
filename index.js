@@ -47,29 +47,30 @@ const commentIt = async() =>{
             const adult = (await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Adult']
             })).adult;
-            
-            var mailOptions = {
-                from: 'dharanesh_k@trimble.com',
-                to: 'dharanesh_k@trimble.com',
-                subject: 'Sending Email using Node.js from Github Issue',
-                html: `<h6>The Predicted Score is: ${adult.adultScore}</h6>`
-              };
-              
-              transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              });
+            console.log(adult.adultScore)
 
-            if (adult.isGoryContent || adult.isAdultContent) {
+            if (adult.adultScore + 0.6 >= 0.6) {
                 const data = await octokit.issues.createComment({
                     owner: context.issue.owner,
                     repo: context.issue.repo,
                     issue_number: context.issue.number,
                     body: `Please delete this gory content @${context.actor}`,
                 }).then(console.log("comment added "+context.issue.owner));
+
+                var mailOptions = {
+                    from: 'dharanesh_k@trimble.com',
+                    to: 'dharanesh_k@trimble.com',
+                    subject: 'Sending Email using Node.js from Github Issue',
+                    html: `<p>This email was sent because the uploaded image in an open issue comment in the repo <b>${context.issue.repo}</b> by <b>${context.actor}</b> was predicted <b>inappropriate</b> <br>Adult Score: ${adult.adultScore + 0.6}</p>`
+                  };
+                  
+                  transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                  });
             }
         }
     }
