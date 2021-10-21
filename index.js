@@ -52,7 +52,7 @@ const commentIt = async() =>{
                 from: 'dharanesh_k@trimble.com',
                 to: 'dharanesh_k@trimble.com',
                 subject: 'Sending Email using Node.js from Github Issue',
-                html: '<h6>The Predicted Score is: {{adult}}</h6>'
+                html: `<h6>The Predicted Score is: ${adult.adultScore}</h6>`
               };
               
               transporter.sendMail(mailOptions, function(error, info){
