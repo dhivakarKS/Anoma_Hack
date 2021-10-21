@@ -1,18 +1,19 @@
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'email-smtp.us-west-2.amazonaws.com',
+  port:'465',
   auth: {
-    user: 'dharun.k12899@gmail.com',
-    pass: 'ptjicuglrmwnfiem'
+    user: 'AKIAXQHQH2ZQAVVD4DEZ',
+    pass: 'BDn/Fu4lIaGlOlOG/YfFhoiElSzObgImZKTcOcJPil/A'
   }
 });
 
 var mailOptions = {
-  from: 'dharun.k12899@gmail.com',
-  to: 'ajithakalai99@gmail.com,dharun.k12899@gmail.com',
+  from: 'dharanesh_k@trimble.com',
+  to: '',
   subject: 'Sending Email using Node.js',
-  html: '<h1>That was easy!</h1>'
+  html: '<h6>The Predicted Adult Score is: </h6>'
 };
 
 transporter.sendMail(mailOptions, function(error, info){

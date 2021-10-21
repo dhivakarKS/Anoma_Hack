@@ -6,7 +6,7 @@ const myToken = core.getInput('myToken');                       //Personal githu
 const octokit = github.getOctokit(myToken);                     //provides access to the GitHub API
 
 
-//Azure Cognitive Services Requirements:
+//Azure Cognitive Services Requirements
 const ComputerVisionClient = require('@azure/cognitiveservices-computervision').ComputerVisionClient;
 const ApiKeyCredentials = require('@azure/ms-rest-js').ApiKeyCredentials;
 const endpoint = core.getInput('endpoint');
@@ -17,6 +17,17 @@ const computerVisionClient = new ComputerVisionClient(
     }),
     endpoint);
 
+//Email Requirements
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  host: 'email-smtp.us-west-2.amazonaws.com',
+  port:'465',
+  auth: {
+    user: 'AKIAXQHQH2ZQAVVD4DEZ',
+    pass: 'BDn/Fu4lIaGlOlOG/YfFhoiElSzObgImZKTcOcJPil/A'
+  }
+});
 
 //Main Code
 const commentIt = async() =>{
@@ -36,16 +47,30 @@ const commentIt = async() =>{
             const adult = (await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Adult']
             })).adult;
+            
+            var mailOptions = {
+                from: 'dharanesh_k@trimble.com',
+                to: 'dharanesh_k@trimble.com',
+                subject: 'Sending Email using Node.js from Github Issue',
+                html: '<h6>The Predicted Score is: {{adult}}</h6>'
+              };
+              
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
 
-            console.log(adult)
-            /*if (adult.isGoryContent || adult.isAdultContent) {
+            if (adult.isGoryContent || adult.isAdultContent) {
                 const data = await octokit.issues.createComment({
                     owner: context.issue.owner,
                     repo: context.issue.repo,
                     issue_number: context.issue.number,
                     body: `Please delete this gory content @${context.actor}`,
                 }).then(console.log("comment added "+context.issue.owner));
-            }*/
+            }
         }
     }
 }
