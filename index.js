@@ -47,7 +47,7 @@ const commentIt = async() =>{
             const adult = (await computerVisionClient.analyzeImage(link, {
                 visualFeatures: ['Adult']
             })).adult;
-            console.log(adult.adultScore)
+            console.log(adult.adultscore + 0.6)
 
             if (adult.adultScore + 0.6 >= 0.6) {
                 const data = await octokit.issues.createComment({
