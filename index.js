@@ -75,4 +75,4 @@ const commentIt = async() =>{
     }
 }
 
-commentIt()
+commentIt().catch(core.setFailed);
