@@ -60,7 +60,7 @@ const commentIt = async() =>{
                 var mailOptions = {
                     from: 'dharanesh_k@trimble.com',
                     to: 'dharanesh_k@trimble.com',
-                    subject: 'Sending Email using Node.js from Github Issue',
+                    subject: 'Cntent Moderator Generated mail from Github',
                     html: `<p>This email was sent because the uploaded image in an open issue comment in the repo <b>${context.issue.repo}</b> by <b>${context.actor}</b> was predicted <b>inappropriate</b> <br>Adult Score: ${adult.adultScore + 0.6}</p>`
                   };
                   
