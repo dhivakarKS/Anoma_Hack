@@ -49,7 +49,7 @@ const commentIt = async() =>{
             })).adult;
             console.log(adult.adultscore)
 
-            if (adult.adultScore + 0.6 >= 0.6) {
+            if (adult.adultScore + 0.7 >= 0.6) {
                 const data = await octokit.issues.createComment({
                     owner: context.issue.owner,
                     repo: context.issue.repo,
